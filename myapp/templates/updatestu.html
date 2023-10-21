@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>update page</title>
+</head>
+<body>
+    <h2><u style="color:lime;"> UPDATE STUDENT INFORMATION </u></h2>
+    <form action="{%url 'update' %}" method="post" >
+        {%csrf_token%}
+        <div style="background-color:lightgreen">
+        <table>
+            <tr>
+                <td>student name </td>
+                <td>
+                    <input type="text" name="stname" value="{{stu.stname}}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>student roll no</td>
+                <td>
+                    <input type="number" name="stroll" value="{{stu.stroll}}" readonly/>
+                </td>
+            </tr>
+            <tr>
+                <td>student branch</td>
+                <td>
+                    <input type="text" name="stbranch" value="{{stu.stbranch}}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>student year </td>
+                <td>
+                    <input type="number" name="styear" value="{{stu.styear}}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>student address</td>
+                <td>
+                    <input type="text" name="staddress" value="{{stu.staddress}}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <button type="submit">update</button>
+                </td>
+            </tr>
+        </table>
+        </div>
+    </form>
+    
+</body>
+</html>

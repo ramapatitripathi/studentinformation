@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Djanago rama project</title>
+   
+    
+</head>
+<body>
+    <div style="background-color: white;">
+    <center>
+    <h1><u style="color: blue;">STUDENT INFORMATION SYSTEM </u> </h1>
+    <marquee behavior="scroll" direction="left" style="color: blue;">
+        
+        <span style="margin-left :1in;"><img src="{% static 'images/new.gif'%}"></span>
+        State private university in Uttar Pradesh.
+        <span style="margin-left :1in;"><img src="{% static 'images/new.gif'%}"></span>
+       BABU BANARASI DAS UNIVERSITY: Admission 2023 (Open)
+        <span style="margin-left :1in;" ><img src="{% static 'images/new.gif'%}"></span>
+        Programmes Offered at BBDU
+      </marquee>
+    </center>
+    
+  <center>  <img src="{% static 'images/univ.jpg'%}" alt="No image.." width="1500" height="600" /></center>
+  </div>
+
+    
+    {% if msg %}
+    <p style="color:red;">{{msg}}</p>
+    {%endif%}
+    <form method="post" action="{% url 'index' %}">
+        {% csrf_token %}
+        <div style="background-color:cyan">
+           
+        <table>
+            
+        <tr>
+            <td>Enter student Name</td>
+            <td>
+                <input type="text" name="stname" placeholder="name"/>
+            </td>
+
+        </tr>
+        <tr>
+            <td>Enter student roll no</td>
+            <td>
+                <input type="number" name="stroll" placeholder="roll no"/>
+            </td>
+
+        </tr>
+        <tr>
+            <td>Enter student branch</td>
+            <td>
+                <select name="stbranch" >
+                    <option >-selected branch-</option>
+                    <option value="computer science with AI">computer science with AI</option>
+                    <option value="civil engineering">civil engineering</option>
+                    <option value="computer science">computer science</option>
+                    <option value="infomation technology">information technology</option>
+                
+                </select>
+            </td>
+
+        </tr>
+        <tr>
+            <td>student B.tech year</td>
+            <td>
+                    <select name="styear" >
+                        <option >-selected year-</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+
+                    </select>
+                </td>
+            </td>
+        </tr>
+        <tr>
+            <td>Enter student address</td>
+            <td>
+                <input type="text" name="staddress" placeholder="address">
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <button type="submit">Register</button>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <button type=""></button>
+            </td>
+        </tr>
+
+                </div>
+                
+                
+        </table>
+
+
+        
+    </form>
+    
+    <div style="background-color:orchid">
+    <table border="1">
+        <div>
+        <tr>
+            <th>Student name</th>
+            <th>Student rollno</th>
+            <th>Student branch</th>
+            <th>Student year</th>
+            <th>Student address</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+        </div>
+        {% for e in stinfo %}
+           <tr>
+            <td>{{e.stname}}</td>
+            <td>{{e.stroll}}</td>
+            <td>{{e.stbranch}}</td>
+            <td>{{e.styear}}</td>
+            <td>{{e.staddress}}</td>
+            <td>
+                <a href="{% url 'deletestu' stroll=e.stroll %}">Delete</a>
+            </td>
+            <td>
+                <a href="{% url 'updatestu' stroll=e.stroll %}">Update</a>
+            </td>
+
+           </tr>
+        {% endfor %}
+
+    </table>
+    </div>
+    
+
+</body>
+</html>
+
+  
+  
+  
+  
+  
+  
